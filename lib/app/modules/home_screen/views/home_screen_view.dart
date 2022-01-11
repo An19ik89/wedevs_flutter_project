@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:wedevs_flutter_project/app/modules/profile/controllers/profile_screen_controllers.dart';
+import 'package:wedevs_flutter_project/app/modules/home_screen/controllers/home_screen_controller.dart';
 import 'package:wedevs_flutter_project/app/utils/res/colors.dart';
 import 'package:wedevs_flutter_project/app/utils/res/dimens.dart';
 
-class ProfileScreenView extends GetView<ProfileScreenController> {
+class HomeScreenView extends GetView<HomeScreenController> {
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<ProfileScreenController>(
+    return GetBuilder<HomeScreenController>(
         builder: (controller) => Scaffold(
           backgroundColor: CustomColors.KAshBg1,
           appBar: PreferredSize(
@@ -23,7 +23,7 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text("Profile Page",
+              Text("Home Screen Page",
                   style: TextStyle(
                       fontSize: Dimens.titleLarge,
                       fontWeight: FontWeight.bold)),

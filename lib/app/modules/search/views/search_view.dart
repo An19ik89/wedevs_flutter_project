@@ -10,6 +10,7 @@ class SearchScreenView extends GetView<SearchScreenController> {
   Widget build(BuildContext context) {
     return GetBuilder<SearchScreenController>(
         builder: (controller) => Scaffold(
+          backgroundColor: CustomColors.KAshBg1,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: AppBar(

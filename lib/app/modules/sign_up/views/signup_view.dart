@@ -10,6 +10,7 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
   Widget build(BuildContext context) {
     return GetBuilder<SignUpScreenController>(
         builder: (controller) => Scaffold(
+          backgroundColor: CustomColors.KAshBg1,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: AppBar(

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:wedevs_flutter_project/app/modules/cart/views/cart_views.dart';
-import 'package:wedevs_flutter_project/app/modules/home/views/home_views.dart';
+import 'package:wedevs_flutter_project/app/modules/home_screen/views/home_screen_view.dart';
 import 'package:wedevs_flutter_project/app/modules/menu/views/menu_view.dart';
 import 'package:wedevs_flutter_project/app/modules/profile/views/profile_view.dart';
 import 'package:wedevs_flutter_project/app/modules/search/views/search_view.dart';
@@ -11,9 +11,9 @@ class HomeController extends GetxController {
   int selectedIndex = 0;
 
   List<Widget> screenList = [
-    HomeView(),
+    HomeScreenView(),
     MenuScreenView(),
-    SearchScreenView(),
+    //SearchScreenView(),
     CartScreenView(),
     ProfileScreenView(),
   ];

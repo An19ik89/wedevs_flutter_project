@@ -10,6 +10,7 @@ class MenuScreenView extends GetView<MenuScreenController> {
   Widget build(BuildContext context) {
     return GetBuilder<MenuScreenController>(
         builder: (controller) => Scaffold(
+          backgroundColor: CustomColors.KAshBg1,
           appBar: PreferredSize(
             preferredSize: Size.fromHeight(0),
             child: AppBar(

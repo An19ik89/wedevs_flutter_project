@@ -3,6 +3,8 @@ import 'package:wedevs_flutter_project/app/modules/cart/bindings/cart_bindings.d
 import 'package:wedevs_flutter_project/app/modules/cart/views/cart_views.dart';
 import 'package:wedevs_flutter_project/app/modules/home/bindings/home_bindings.dart';
 import 'package:wedevs_flutter_project/app/modules/home/views/home_views.dart';
+import 'package:wedevs_flutter_project/app/modules/home_screen/bindings/home_screen_binding.dart';
+import 'package:wedevs_flutter_project/app/modules/home_screen/views/home_screen_view.dart';
 import 'package:wedevs_flutter_project/app/modules/login/bindings/login_bindings.dart';
 import 'package:wedevs_flutter_project/app/modules/login/views/login_view.dart';
 import 'package:wedevs_flutter_project/app/modules/menu/bindings/menu_bindings.dart';
@@ -22,7 +24,7 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.LOGIN;
+  static const INITIAL = Routes.HOME;
 
 
   static final routes = [
@@ -32,9 +34,14 @@ class AppPages {
       binding: LoginBinding(),
     ),
     GetPage(
-      name: _Paths.HOME_SCREEN,
+      name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.HOME_SCREEN,
+      page: () => HomeScreenView(),
+      binding: HomeScreenBinding(),
     ),
     GetPage(
       name: _Paths.SIGNUP,
