@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wedevs_flutter_project/app/modules/home_screen/controllers/home_screen_controller.dart';
 import 'package:wedevs_flutter_project/app/modules/home_screen/widget/product_grid_widget.dart';
+import 'package:wedevs_flutter_project/app/utils/helper/utility.dart';
 import 'package:wedevs_flutter_project/app/utils/res/colors.dart';
 import 'package:wedevs_flutter_project/app/utils/res/dimens.dart';
 
@@ -112,26 +113,27 @@ class HomeScreenView extends GetView<HomeScreenController> {
                       Padding(
                           padding: const EdgeInsets.all(8.0),
                           child: Obx(() {
-                            return Column(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                            return ListView(
+                              shrinkWrap: true,
+                              scrollDirection: Axis.vertical,
+                              physics: AlwaysScrollableScrollPhysics(),
                               children: [
                                 const SizedBox(
                                   height: 15.0,
                                 ),
                                 ListTile(
                                     title: Text(
-                                  "Filter",
-                                  softWrap: true,
-                                  textAlign: TextAlign.left,
-                                  style: GoogleFonts.roboto(
-                                      textStyle:
+                                      "Filter",
+                                      softWrap: true,
+                                      textAlign: TextAlign.left,
+                                      style: GoogleFonts.roboto(
+                                          textStyle:
                                           Theme.of(context).textTheme.headline4,
-                                      fontSize: 17,
-                                      color: CustomColors.KDarkBlackColor,
-                                      fontStyle: FontStyle.normal,
-                                      fontWeight: FontWeight.w700),
-                                )),
+                                          fontSize: 17,
+                                          color: CustomColors.KDarkBlackColor,
+                                          fontStyle: FontStyle.normal,
+                                          fontWeight: FontWeight.w700),
+                                    )),
                                 ListTile(
                                   title: Text(
                                     "Newest",
@@ -147,7 +149,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   leading: Checkbox(
                                     value: controller.checkBoxValue[0],
                                     materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     ),
@@ -176,7 +178,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   leading: Checkbox(
                                     value: controller.checkBoxValue[1],
                                     materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     ),
@@ -205,7 +207,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   leading: Checkbox(
                                     value: controller.checkBoxValue[2],
                                     materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     ),
@@ -234,7 +236,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   leading: Checkbox(
                                     value: controller.checkBoxValue[3],
                                     materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     ),
@@ -263,7 +265,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                   leading: Checkbox(
                                     value: controller.checkBoxValue[4],
                                     materialTapTargetSize:
-                                        MaterialTapTargetSize.shrinkWrap,
+                                    MaterialTapTargetSize.shrinkWrap,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(5),
                                     ),
@@ -280,7 +282,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                 ),
                                 Row(
                                   mainAxisAlignment:
-                                      MainAxisAlignment.spaceAround,
+                                  MainAxisAlignment.spaceAround,
                                   children: [
                                     ElevatedButton(
                                         child: const Text("Cancel",
@@ -319,10 +321,14 @@ class HomeScreenView extends GetView<HomeScreenController> {
                                 )
                               ],
                             );
+
+
                           })),
                       elevation: 20.0,
-                      enableDrag: false,
+                      enableDrag: true,
                       isDismissible: true,
+                      ignoreSafeArea: true,
+                      isScrollControlled: false,
                       backgroundColor: Colors.white,
                     );
                   },
