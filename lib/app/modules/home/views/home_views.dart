@@ -42,7 +42,7 @@ class HomeView extends GetView<HomeController> {
                   ),
                 ),
                 bottomNavigationBar: BottomAppBar(
-                  elevation: 0,
+                  elevation: 20,
                   shape: const CircularNotchedRectangle(),
                   notchMargin: 5.0,
                   clipBehavior: Clip.antiAlias,

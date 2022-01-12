@@ -59,6 +59,7 @@ class CustomColors {
   static const Color KSellAlgaeGreenBackGround = Color(0xFF92E3A9);
 
 
+  //using
   static const Color KWhite = Color(0xFFFFFFFF);
   static const Color KSkyBlueColor = Color(0xFFF4FDFF);
   static const Color KReddishColor = Color(0xFFFF708A);
@@ -67,6 +68,11 @@ class CustomColors {
   static const Color KPinkOrange = Color(0xFFFF7B51);
   static const Color KAshBg = Color(0xFFE5E5E5);
   static const Color KAshBg1 = Color(0xFFF8F8F8);
+  static const Color KDarkBlue = Color(0xFF222455);
+  static const Color KGrey = Color(0xFF818995);
+  static const Color KGreen = Color(0xFF1ABC9C);
+  static const Color KGreyLight = Color(0xFFD2DBE0);
+  static const Color KGreyMoreLight = Color(0xFF989FA8);
 
 
 
