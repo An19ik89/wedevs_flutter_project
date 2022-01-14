@@ -6,6 +6,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wedevs_flutter_project/app/modules/login/controllers/login_screen_controller.dart';
+import 'package:wedevs_flutter_project/app/routes/app_pages.dart';
 import 'package:wedevs_flutter_project/app/utils/helper/fade_animation.dart';
 import 'package:wedevs_flutter_project/app/utils/res/colors.dart';
 import 'package:wedevs_flutter_project/app/utils/res/dimens.dart';
@@ -431,7 +432,7 @@ class LoginScreenView extends GetView<LoginScreenController> {
                                       ),
                                     )),
                                 onTap: () {
-                                  //Get.toNamed(Routes.SIGNUP);
+                                  Get.toNamed(Routes.SIGNUP);
                                 },
                               ),
                             ],
