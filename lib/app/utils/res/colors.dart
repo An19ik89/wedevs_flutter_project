@@ -75,6 +75,11 @@ class CustomColors {
   static const Color KGreyMoreLight = Color(0xFF989FA8);
   static const Color KGreyAshes = Color(0xFFD3D8E5);
   static const Color KGoldy = Color(0xFFF5A623);
+  static const Color KLightBlue = Color(0xFF395AB8);
+  static const Color KBlackGrey= Color(0xFFA4A9AF);
+  static const Color KRedOrange= Color(0xFFF75F55);
+  static const Color KDarkish= Color(0xFF383C40);
+
 
 
 

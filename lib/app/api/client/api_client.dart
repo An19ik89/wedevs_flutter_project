@@ -4,7 +4,7 @@ import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:wedevs_flutter_project/app/data/local/local_storage.dart';
 
 
-const API_BASE_URL = "https://jsonplaceholder.typicode.com/";
+const API_BASE_URL = "https://apptest.dokandemo.com/";
 
 
 enum Method { POST, GET, PUT, DELETE, PATCH }
@@ -62,9 +62,6 @@ class ApiClient extends GetxService {
           queryParameters: params,
         );
       }
-
-      print(response);
-
       if (response.statusCode == 200) {
         return response;
       } else if (response.statusCode == 401) {
@@ -82,7 +79,6 @@ class ApiClient extends GetxService {
       if (e.type == DioErrorType.connectTimeout) {
         throw Exception("Connection  Timeout Exception");
       }
-      print(e.message);
       throw Exception(e.message);
     } catch (e) {
       throw Exception("$e");
