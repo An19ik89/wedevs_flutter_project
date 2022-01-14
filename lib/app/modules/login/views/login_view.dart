@@ -16,17 +16,17 @@ class LoginScreenView extends GetView<LoginScreenController> {
   Widget build(BuildContext context) {
     return GetBuilder<LoginScreenController>(
         builder: (loginController) => Scaffold(
-            backgroundColor: CustomColors.KAshBg,
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(0),
-              child: AppBar(
-                systemOverlayStyle: const SystemUiOverlayStyle(
-                    statusBarColor: CustomColors.KRoseGoldColor,
-                    statusBarIconBrightness: Brightness.dark),
-                backgroundColor: CustomColors.KPrimaryStatusBarColor,
-                elevation: 0,
-              ),
-            ),
+            backgroundColor: CustomColors.KAshBg1,
+            // appBar: PreferredSize(
+            //   preferredSize: const Size.fromHeight(0),
+            //   child: AppBar(
+            //     systemOverlayStyle: const SystemUiOverlayStyle(
+            //         statusBarColor: CustomColors.KRoseGoldColor,
+            //         statusBarIconBrightness: Brightness.dark),
+            //     backgroundColor: CustomColors.KPrimaryStatusBarColor,
+            //     elevation: 0,
+            //   ),
+            // ),
             body: SingleChildScrollView(
               child: Obx(() {
                 if (loginController.loginProcess.value) {

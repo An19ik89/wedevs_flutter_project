@@ -10,14 +10,14 @@ class CartScreenView extends GetView<CartScreenController> {
   Widget build(BuildContext context) {
     return GetBuilder<CartScreenController>(
         builder: (controller) => Scaffold(
-          appBar: PreferredSize(
-            preferredSize: Size.fromHeight(0),
-            child: AppBar(
-              systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: CustomColors.KRoseGoldColor,statusBarIconBrightness: Brightness.dark),
-              backgroundColor: CustomColors.KPrimaryStatusBarColor,
-              elevation: 0,
-            ),
-          ),
+          // appBar: PreferredSize(
+          //   preferredSize: Size.fromHeight(0),
+          //   child: AppBar(
+          //     systemOverlayStyle: SystemUiOverlayStyle(statusBarColor: CustomColors.KRoseGoldColor,statusBarIconBrightness: Brightness.dark),
+          //     backgroundColor: CustomColors.KPrimaryStatusBarColor,
+          //     elevation: 0,
+          //   ),
+          // ),
           body: new Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,

@@ -31,7 +31,6 @@ class HomeScreenController extends GetxController {
 
   loadJson() async {
     data = await rootBundle.loadString('assets/json/response.json');
-    //jsonResult = json.decode(data);
     parsedJson = json.decode(data!);
     result.addAll(parsedJson!.map((item) => ResponseData.fromJson(item)).toList());
   }

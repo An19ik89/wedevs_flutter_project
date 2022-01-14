@@ -19,6 +19,7 @@ dependencies:
   simple_animations: ^3.0.0
   flutter_spinkit: ^5.1.0
   image_picker: ^0.8.4+4
+  dotted_border: ^2.0.0+2
   flutter:
     sdk: flutter
 

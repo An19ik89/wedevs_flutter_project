@@ -24,7 +24,7 @@ class HomeScreenView extends GetView<HomeScreenController> {
                   backgroundColor: CustomColors.KAshBg1,
                   appBar: appBar(context),
                   body: CustomScrollView(
-                    physics: BouncingScrollPhysics(),
+                    physics: const BouncingScrollPhysics(),
                     slivers: <Widget>[
                       SliverList(
                           delegate: SliverChildListDelegate([

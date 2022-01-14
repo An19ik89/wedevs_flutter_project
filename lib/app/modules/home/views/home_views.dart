@@ -15,6 +15,7 @@ class HomeView extends GetView<HomeController> {
               top: true,
               child: Scaffold(
                 extendBody: true,
+                backgroundColor: CustomColors.KAshBg1,
                 floatingActionButtonLocation:
                     FloatingActionButtonLocation.centerDocked,
                 floatingActionButton: Container(
@@ -41,23 +42,19 @@ class HomeView extends GetView<HomeController> {
                     backgroundColor: Colors.transparent,
                   ),
                 ),
-                bottomNavigationBar: BottomAppBar(
-                  elevation: 20,
-                  shape: const CircularNotchedRectangle(),
-                  notchMargin: 5.0,
-                  clipBehavior: Clip.antiAlias,
-                  child: SizedBox(
-                    height: 60,
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color:  CustomColors.KAshBg1,
-                        border: Border(
-                          top: BorderSide(
-                            color: Colors.transparent,
-                            width: 0.0,
-                          ),
-                        ),
-                      ),
+                bottomNavigationBar: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(30.0),
+                    topRight: Radius.circular(30.0),
+                  ),
+                  child: BottomAppBar(
+                    elevation: 0,
+                    shape: const CircularNotchedRectangle(),
+                    notchMargin: 5.0,
+                    clipBehavior: Clip.antiAlias,
+                    color: CustomColors.KAshBg1,
+                    child: SizedBox(
+                      height: 60,
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(30.0),

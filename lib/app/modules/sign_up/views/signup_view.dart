@@ -7,6 +7,7 @@ import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wedevs_flutter_project/app/modules/sign_up/controllers/signup_controller.dart';
 import 'package:wedevs_flutter_project/app/routes/app_pages.dart';
+import 'package:wedevs_flutter_project/app/utils/helper/build_circle.dart';
 import 'package:wedevs_flutter_project/app/utils/helper/fade_animation.dart';
 import 'package:wedevs_flutter_project/app/utils/res/colors.dart';
 
@@ -18,17 +19,7 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
   Widget build(BuildContext context) {
     return GetBuilder<SignUpScreenController>(
         builder: (signUpController) => Scaffold(
-            backgroundColor: CustomColors.KAshBg,
-            appBar: PreferredSize(
-              preferredSize: const Size.fromHeight(0),
-              child: AppBar(
-                systemOverlayStyle: const SystemUiOverlayStyle(
-                    statusBarColor: CustomColors.KRoseGoldColor,
-                    statusBarIconBrightness: Brightness.dark),
-                backgroundColor: CustomColors.KPrimaryStatusBarColor,
-                elevation: 0,
-              ),
-            ),
+            backgroundColor: CustomColors.KAshBg1,
             body: SingleChildScrollView(
               child: Obx(() {
                 if (signUpController.signUpProcess.value) {
@@ -535,7 +526,7 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                                     )
                                     ),
                                 onTap: () {
-                                  Get.toNamed(Routes.LOGIN);
+                                  Get.back();
                                 },
                               ),
                             ],
@@ -548,106 +539,7 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
               }),
             )));
   }
-
-  Widget buildCircle({
-    required Widget child,
-    required double all,
-    required Color color,
-  }) =>
-      ClipOval(
-        child: Container(
-          padding: EdgeInsets.all(all),
-          decoration: BoxDecoration(
-            color: color,
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withOpacity(0.2),
-                offset: const Offset(0, 5),
-                blurRadius: 6,
-              ),
-            ],
-            gradient: const LinearGradient(
-                colors: [CustomColors.KPink, CustomColors.KPinkOrange]),
-          ),
-
-          child: child,
-        ),
-      );
-
 }
 
 
-class ProfileWidget extends StatelessWidget {
-  final String imagePath;
-  final bool isEdit;
-  final VoidCallback onClicked;
 
-  const ProfileWidget({
-    Key? key,
-    required this.imagePath,
-    this.isEdit = false,
-    required this.onClicked,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final color = Theme.of(context).colorScheme.primary;
-
-    return Center(
-      child: Stack(
-        children: [
-          buildImage(),
-          Positioned(
-            bottom: 0,
-            right: 4,
-            child: buildEditIcon(color),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildImage() {
-    final image = NetworkImage(imagePath);
-
-    return ClipOval(
-      child: Material(
-        color: Colors.transparent,
-        child: Ink.image(
-          image: image,
-          fit: BoxFit.cover,
-          width: 128,
-          height: 128,
-          child: InkWell(onTap: onClicked),
-        ),
-      ),
-    );
-  }
-
-  Widget buildEditIcon(Color color) => buildCircle(
-    color: Colors.white,
-    all: 3,
-    child: buildCircle(
-      color: color,
-      all: 8,
-      child: Icon(
-        isEdit ? Icons.add_a_photo : Icons.edit,
-        color: Colors.white,
-        size: 20,
-      ),
-    ),
-  );
-
-  Widget buildCircle({
-    required Widget child,
-    required double all,
-    required Color color,
-  }) =>
-      ClipOval(
-        child: Container(
-          padding: EdgeInsets.all(all),
-          color: color,
-          child: child,
-        ),
-      );
-}
