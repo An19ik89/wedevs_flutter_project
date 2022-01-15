@@ -10,8 +10,6 @@ class LoginRepository extends GetxService {
     return _loginProvider.signInWithUserNamePassword(email: email,password: password);
   }
 
-  Future<UserModel?> getUserDetails(){
-    return _loginProvider.getUserDetails();
-  }
+
 
 }

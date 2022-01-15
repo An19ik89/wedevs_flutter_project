@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:dotted_border/dotted_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -38,11 +39,11 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                           child: DottedBorder(
                             borderType: BorderType.Oval,
                             color: CustomColors.KRedOrange,
-                            dashPattern: [3, 4],
+                            dashPattern: const [3, 4],
                             strokeWidth: 1.0,
                             strokeCap: StrokeCap.butt,
-                            radius: Radius.circular(90),
-                            padding: EdgeInsets.all(6),
+                            radius: const Radius.circular(90),
+                            padding: const EdgeInsets.all(6),
                             child: Card(
                               shape: const RoundedRectangleBorder(
                                 borderRadius: BorderRadius.all(
@@ -50,25 +51,39 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                                 ),
                               ),
                               color: Colors.white,
-                              child: SizedBox(
-                                height: 122,
-                                width: 122,
-                                child: Stack(
-                                  children: [
-                                    Center(
-                                      child: SizedBox(
-                                        width: 25,
-                                        height: 25,
-                                        child: SvgPicture.asset(
-                                          'assets/icons/ic_name.svg',
+                              child: Obx((){
+                                return SizedBox(
+                                  height: 122,
+                                  width: 122,
+                                  child: profileScreenController.avatar.value.isEmpty  ? Stack(
+                                    children: [
+                                      Center(
+                                        child: SizedBox(
                                           width: 25,
                                           height: 25,
+                                          child: SvgPicture.asset(
+                                            'assets/icons/ic_name.svg',
+                                            width: 25,
+                                            height: 25,
+                                          ),
                                         ),
                                       ),
+                                    ],
+                                  ) :
+                                  ClipRRect(
+                                    borderRadius: const BorderRadius.all(
+                                      Radius.circular(90),
                                     ),
-                                  ],
-                                ),
-                              ),
+                                    child: CachedNetworkImage(
+                                      //imageUrl: "https://secure.gravatar.com/avatar/?s=96&d=mm&r=g",
+                                      imageUrl: profileScreenController.avatar.value,
+                                      width: 122,
+                                      height: 122,
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                );
+                              })
                             ),
                           ),
                         ),
@@ -82,7 +97,7 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                           child: Column(
                             children: [
                               Text(
-                                'John Smith',
+                                profileScreenController.name.value,
                                 style: GoogleFonts.lato(
                                   textStyle: const TextStyle(
                                       color: CustomColors.KDarkBlackColor,
@@ -95,7 +110,7 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                                 height: 10.0,
                               ),
                               Text(
-                                'info@johnsmith.com',
+                                profileScreenController.email.value.isEmpty ? 'info@test.com' : profileScreenController.email.value,
                                 style: GoogleFonts.lato(
                                   textStyle: const TextStyle(
                                       color: CustomColors.KDarkGreyBlackColor,

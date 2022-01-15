@@ -17,16 +17,6 @@ class LoginScreenView extends GetView<LoginScreenController> {
     return GetBuilder<LoginScreenController>(
         builder: (loginController) => Scaffold(
             backgroundColor: CustomColors.KAshBg1,
-            // appBar: PreferredSize(
-            //   preferredSize: const Size.fromHeight(0),
-            //   child: AppBar(
-            //     systemOverlayStyle: const SystemUiOverlayStyle(
-            //         statusBarColor: CustomColors.KRoseGoldColor,
-            //         statusBarIconBrightness: Brightness.dark),
-            //     backgroundColor: CustomColors.KPrimaryStatusBarColor,
-            //     elevation: 0,
-            //   ),
-            // ),
             body: SingleChildScrollView(
               child: Obx(() {
                 if (loginController.loginProcess.value) {
@@ -44,7 +34,7 @@ class LoginScreenView extends GetView<LoginScreenController> {
                   return Column(
                     children: <Widget>[
                       const SizedBox(
-                        height: 50.0,
+                        height: 150.0,
                       ),
                       FadeAnimation(
                           1,

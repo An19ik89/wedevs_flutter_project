@@ -5,8 +5,10 @@ import 'package:get_storage/get_storage.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:wedevs_flutter_project/app/api/client/api_client.dart';
 import 'package:wedevs_flutter_project/app/api/provider/login_provider.dart';
+import 'package:wedevs_flutter_project/app/api/provider/profile_provider.dart';
 import 'package:wedevs_flutter_project/app/api/provider/sign_up_provider.dart';
 import 'package:wedevs_flutter_project/app/api/repository/login_repository.dart';
+import 'package:wedevs_flutter_project/app/api/repository/profile_repository.dart';
 import 'package:wedevs_flutter_project/app/api/repository/sign_up_repository.dart';
 import 'package:wedevs_flutter_project/app/data/local/local_storage.dart';
 import 'package:wedevs_flutter_project/app/routes/app_pages.dart';
@@ -21,10 +23,14 @@ void main() async {
   await Get.putAsync<LoginRepository>(() async => LoginRepository());
   await Get.putAsync<SignUpProvider>(() async => SignUpProvider());
   await Get.putAsync<SignUpRepository>(() async => SignUpRepository());
+  await Get.putAsync<ProfileProvider>(() async => ProfileProvider());
+  await Get.putAsync<ProfileRepository>(() async => ProfileRepository());
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light.copyWith(

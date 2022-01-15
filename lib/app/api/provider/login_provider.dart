@@ -27,7 +27,7 @@ class LoginProvider extends GetxService {
       DIO.Response response = await _apiClient.request("wp-json/wp/v2/users/me",Method.GET);
       if (response.statusCode == 200)
       {
-        //log("response usr : ${response.data}");
+        log("response usr : ${response.data}");
         return UserModel.fromJson(response.data);
       }
     } catch (e) {

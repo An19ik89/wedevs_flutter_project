@@ -37,7 +37,7 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                   return Column(
                     children: <Widget>[
                       const SizedBox(
-                        height: 30.0,
+                        height: 80.0,
                       ),
                       FadeAnimation(
                         2,

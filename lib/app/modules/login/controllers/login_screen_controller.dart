@@ -58,11 +58,11 @@ class LoginScreenController extends GetxController {
           userInfo.write('user_nicename', userLoggedInInfo!.userNicename);
           userInfo.write('user_display_name', userLoggedInInfo!.userDisplayName);
           userInfo.write('SignIn',true);
-          UserModel? model = await loginRepository.getUserDetails();
-          userInfo.write('name', model!.name);
-          userInfo.write('id', model.id);
-          userInfo.write('avatar', model.id);
-          print("avatar : ${model.avatarUrls}");
+          // UserModel? model = await loginRepository.getUserDetails();
+          // userInfo.write('name', model!.name);
+          // userInfo.write('id', model.id);
+          // userInfo.write('avatar', model.avatarUrls);
+          // print("avatar : ${model.avatarUrls}");
           Get.deleteAll();
           Get.toNamed(Routes.HOME);
         }
