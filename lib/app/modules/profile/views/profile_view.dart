@@ -1,4 +1,5 @@
 import 'package:dotted_border/dotted_border.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,6 +9,7 @@ import 'package:wedevs_flutter_project/app/modules/profile/controllers/profile_s
 import 'package:wedevs_flutter_project/app/utils/helper/build_circle.dart';
 import 'package:wedevs_flutter_project/app/utils/helper/fade_animation.dart';
 import 'package:wedevs_flutter_project/app/utils/res/colors.dart';
+import 'package:wedevs_flutter_project/app/utils/res/dimens.dart';
 
 class ProfileScreenView extends GetView<ProfileScreenController> {
   @override
@@ -123,6 +125,7 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                               child: Obx((){
                                 return ListView(
                                   shrinkWrap: true,
+                                  physics: const NeverScrollableScrollPhysics(),
                                   children: [
                                     ListTile(
                                       title: Text(
@@ -161,6 +164,445 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                                         ),
                                       ),
                                     ),
+                                    profileScreenController.expandingListValue[0]== true ? Padding(
+                                      padding: const EdgeInsets.only(left: 15.0,right: 15.0),
+                                      child: Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          const SizedBox(height: 10,),
+                                          Text(
+                                            "Email",
+                                            softWrap: true,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 16,
+                                                color: CustomColors.KDeepDark,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          TextFormField(
+                                            keyboardType: TextInputType.text,
+                                            //controller: signUpController.nameTextController,
+                                            style: GoogleFonts.roboto(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .headline4,
+                                              fontSize: 17,
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                            ),
+                                            decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              enabledBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              focusedBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              contentPadding:
+                                              const EdgeInsets.fromLTRB(
+                                                15.0,
+                                                15.0,
+                                                0.0,
+                                                5.0,
+                                              ),
+                                              hintText: 'youremail@xmail.com',
+                                              hintStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 15,
+                                                color: CustomColors.KBlackGrey,
+                                                fontWeight: FontWeight.w400,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                              errorStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 14,
+                                                color: Colors.red,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                            ),
+                                            validator: (String? value) =>
+                                            value!.trim().isEmpty
+                                                ? "Email is required"
+                                                : null,
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Text(
+                                            "Full Name",
+                                            softWrap: true,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 16,
+                                                color: CustomColors.KDeepDark,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          TextFormField(
+                                            keyboardType: TextInputType.text,
+                                            //controller: signUpController.nameTextController,
+                                            style: GoogleFonts.roboto(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .headline4,
+                                              fontSize: 17,
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                            ),
+                                            decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              enabledBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              focusedBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              contentPadding:
+                                              const EdgeInsets.fromLTRB(
+                                                15.0,
+                                                15.0,
+                                                0.0,
+                                                5.0,
+                                              ),
+                                              hintText: 'Full Name',
+                                              hintStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 15,
+                                                color: CustomColors.KBlackGrey,
+                                                fontWeight: FontWeight.w400,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                              errorStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 14,
+                                                color: Colors.red,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                            ),
+                                            validator: (String? value) =>
+                                            value!.trim().isEmpty
+                                                ? "Full Name is required"
+                                                : null,
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Text(
+                                            "Street Address",
+                                            softWrap: true,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 16,
+                                                color: CustomColors.KDeepDark,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          TextFormField(
+                                            keyboardType: TextInputType.text,
+                                            //controller: signUpController.nameTextController,
+                                            style: GoogleFonts.roboto(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .headline4,
+                                              fontSize: 17,
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                            ),
+                                            decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              enabledBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              focusedBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              contentPadding:
+                                              const EdgeInsets.fromLTRB(
+                                                15.0,
+                                                15.0,
+                                                0.0,
+                                                5.0,
+                                              ),
+                                              hintText: 'Street Address',
+                                              hintStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 15,
+                                                color: CustomColors.KBlackGrey,
+                                                fontWeight: FontWeight.w400,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                              errorStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 14,
+                                                color: Colors.red,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                            ),
+                                            validator: (String? value) =>
+                                            value!.trim().isEmpty
+                                                ? "Street Address is required"
+                                                : null,
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Text(
+                                            "App, Suite, Bldg (Optional)",
+                                            softWrap: true,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 16,
+                                                color: CustomColors.KDeepDark,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          TextFormField(
+                                            keyboardType: TextInputType.text,
+                                            //controller: signUpController.nameTextController,
+                                            style: GoogleFonts.roboto(
+                                              textStyle: Theme.of(context)
+                                                  .textTheme
+                                                  .headline4,
+                                              fontSize: 17,
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                            ),
+                                            decoration: InputDecoration(
+                                              border: InputBorder.none,
+                                              enabledBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              focusedBorder: const OutlineInputBorder(
+                                                borderRadius: BorderRadius.all(
+                                                    Radius.circular(10.0)),
+                                                borderSide: BorderSide(
+                                                  color: CustomColors.KAshBg,
+                                                  width: 1.0,
+                                                ),
+                                              ),
+                                              contentPadding:
+                                              const EdgeInsets.fromLTRB(
+                                                15.0,
+                                                15.0,
+                                                0.0,
+                                                5.0,
+                                              ),
+                                              hintText: 'Unit',
+                                              hintStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 15,
+                                                color: CustomColors.KBlackGrey,
+                                                fontWeight: FontWeight.w400,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                              errorStyle: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 14,
+                                                color: Colors.red,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                            ),
+                                            validator: (String? value) =>
+                                            value!.trim().isEmpty
+                                                ? "Unit is required"
+                                                : null,
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Text(
+                                            "Zip Code",
+                                            softWrap: true,
+                                            overflow: TextOverflow.ellipsis,
+                                            textAlign: TextAlign.start,
+                                            style: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 16,
+                                                color: CustomColors.KDeepDark,
+                                                fontStyle: FontStyle.normal,
+                                                fontWeight: FontWeight.w400),
+                                          ),
+                                          const SizedBox(height: 10,),
+                                          Padding(
+                                            padding: const EdgeInsets.only(right: 220.0),
+                                            child: TextFormField(
+                                              keyboardType: TextInputType.text,
+                                              //controller: signUpController.nameTextController,
+                                              style: GoogleFonts.roboto(
+                                                textStyle: Theme.of(context)
+                                                    .textTheme
+                                                    .headline4,
+                                                fontSize: 17,
+                                                color: Colors.black,
+                                                fontStyle: FontStyle.normal,
+                                              ),
+                                              decoration: InputDecoration(
+                                                border: InputBorder.none,
+                                                focusedBorder: const OutlineInputBorder(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(10.0)),
+                                                  borderSide: BorderSide(
+                                                    color: CustomColors.KAshBg,
+                                                    width: 1.0,
+                                                  ),
+                                                ),
+                                                enabledBorder: const OutlineInputBorder(
+                                                  borderRadius: BorderRadius.all(
+                                                      Radius.circular(10.0)),
+                                                  borderSide: BorderSide(
+                                                    color: CustomColors.KAshBg,
+                                                    width: 1.0,
+                                                  ),
+                                                ),
+                                                contentPadding:
+                                                const EdgeInsets.fromLTRB(
+                                                  15.0,
+                                                  15.0,
+                                                  0.0,
+                                                  5.0,
+                                                ),
+                                                hintText: 'zip code',
+                                                hintStyle: GoogleFonts.roboto(
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .headline4,
+                                                  fontSize: 15,
+                                                  color: CustomColors.KBlackGrey,
+                                                  fontWeight: FontWeight.w400,
+                                                  fontStyle: FontStyle.normal,
+                                                ),
+                                                errorStyle: GoogleFonts.roboto(
+                                                  textStyle: Theme.of(context)
+                                                      .textTheme
+                                                      .headline4,
+                                                  fontSize: 14,
+                                                  color: Colors.red,
+                                                  fontStyle: FontStyle.normal,
+                                                ),
+                                              ),
+                                              validator: (String? value) =>
+                                              value!.trim().isEmpty
+                                                  ? "Zip code is required"
+                                                  : null,
+                                            ),
+                                          ),
+                                          const SizedBox(height: 25,),
+                                          Row(
+                                            mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                            children: [
+                                              ElevatedButton(
+                                                  child: const Text("Cancel",
+                                                      style: TextStyle(
+                                                          color: CustomColors.KMoreLightAsh,
+                                                          fontSize: Dimens.titleLarge,
+                                                          fontWeight: FontWeight.bold)
+                                                  ),
+                                                  style: ElevatedButton.styleFrom(
+                                                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                                      side: const BorderSide(
+                                                        width: 1.0,
+                                                        color: CustomColors.KGreyLight,
+                                                      ),
+                                                      elevation: 0,
+                                                      primary: Colors.white,
+                                                      padding: const EdgeInsets.symmetric(
+                                                          horizontal: 40, vertical: 15),
+                                                      textStyle: const TextStyle(
+                                                          fontSize: 17,
+                                                          fontWeight: FontWeight.w700)),
+                                                  onPressed: () => null,),
+                                                      //controller.clearFilter()),
+                                              ElevatedButton(
+                                                  child: const Text("Save",
+                                                      style: TextStyle(
+                                                          fontSize: Dimens.titleLarge,
+                                                          fontWeight: FontWeight.bold)),
+                                                  style: ElevatedButton.styleFrom(
+                                                      primary: CustomColors.KGreen,
+                                                      elevation: 0,
+                                                      shape: const RoundedRectangleBorder(borderRadius: BorderRadius.all(Radius.circular(10))),
+                                                      padding: const EdgeInsets.symmetric(
+                                                          horizontal: 40, vertical: 15),
+                                                      textStyle: const TextStyle(
+                                                          fontSize: 17,
+                                                          fontWeight: FontWeight.w400)),
+                                                  onPressed: () => null,
+                                                     // controller.applyFilter()
+                                              ),
+                                            ],
+                                          )
+                                        ],
+                                      ),
+                                    ) : const SizedBox.shrink(),
+                                    SizedBox(height: profileScreenController.expandingListValue[0]== true ? 30 : 0,),
                                     const Divider(
                                       color: CustomColors.KDarkGreyColor,
                                       thickness: 0.5,
@@ -290,10 +732,6 @@ class ProfileScreenView extends GetView<ProfileScreenController> {
                                         ),
                                       ),
                                     ),
-                                    profileScreenController.expandingListValue[3]== true ? SizedBox(
-                                          height: 200,
-                                          child: new Text("Anik",style: TextStyle(color: Colors.blue),),
-                                        ) : SizedBox.shrink()
                                   ],
                                 );
                               })

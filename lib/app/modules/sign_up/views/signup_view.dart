@@ -161,7 +161,8 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                                               ? "Name is required"
                                               : null,
                                     ),
-                                  )),
+                                  )
+                              ),
                               const SizedBox(
                                 height: 20,
                               ),

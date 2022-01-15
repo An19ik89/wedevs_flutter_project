@@ -27,4 +27,6 @@ class CustomColors {
   static const Color KDarkBlackColor = Color(0xFF2E353A);
   static const Color KDarkGreyBlackColor = Color(0xFF535353);
   static const Color KDarkGreyColor = Color(0xFFA0A9BD);
+  static const Color KDeepDark = Color(0xFF263238);
+  static const Color KMoreLightAsh = Color(0xFF607374);
 }
