@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:email_validator/email_validator.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -54,7 +57,16 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                             child: Stack(
                               children: [
                                 Center(
-                                  child: SizedBox(
+                                  child: controller.profilePicturePick.value.path != "" ? ClipRRect(
+
+                                    borderRadius: BorderRadius.circular(90.0),
+                                    child: Image.file(
+                                      File(controller.profilePicturePick.value.path),
+                                      fit: BoxFit.cover,
+                                      height: 122,
+                                      width: 122,
+                                    ),
+                                  ) : SizedBox(
                                     width: 25,
                                     height: 25,
                                     child: SvgPicture.asset(
@@ -67,16 +79,19 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                                 Positioned(
                                   bottom: 0,
                                   right: 4,
-                                  child: buildCircle(
-                                    color: CustomColors.KReddishColor,
-                                    all: 3,
+                                  child: InkWell(
+                                    onTap: ()=>signUpController.selectImage(),
                                     child: buildCircle(
                                       color: CustomColors.KReddishColor,
-                                      all: 8,
-                                      child: SvgPicture.asset(
-                                        'assets/icons/ic_camera.svg',
-                                        width: 15,
-                                        height: 15,
+                                      all: 3,
+                                      child: buildCircle(
+                                        color: CustomColors.KReddishColor,
+                                        all: 8,
+                                        child: SvgPicture.asset(
+                                          'assets/icons/ic_camera.svg',
+                                          width: 15,
+                                          height: 15,
+                                        ),
                                       ),
                                     ),
                                   ),
@@ -229,10 +244,19 @@ class SignUpScreenView extends GetView<SignUpScreenController> {
                                           fontStyle: FontStyle.normal,
                                         ),
                                       ),
-                                      validator: (String? value) =>
-                                          value!.trim().isEmpty
-                                              ? "Email is required"
-                                              : null,
+
+                                      validator: (String? value){
+                                        if(value!.trim().isEmpty) {
+                                          return "Email is required";
+                                        }
+                                        else if(!EmailValidator.validate(value)) {
+                                          return "Email is not valid";
+                                        }
+                                        else {
+                                          return null;
+                                        }
+                                      }
+
                                     ),
                                   )),
                               const SizedBox(

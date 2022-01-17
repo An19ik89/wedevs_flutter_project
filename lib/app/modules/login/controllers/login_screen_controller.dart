@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:wedevs_flutter_project/app/api/repository/login_repository.dart';
+import 'package:wedevs_flutter_project/app/data/local/local_storage.dart';
 import 'package:wedevs_flutter_project/app/data/model/user_model.dart';
 import 'package:wedevs_flutter_project/app/routes/app_pages.dart';
 
@@ -52,17 +53,7 @@ class LoginScreenController extends GetxController {
       {
         if (userLoggedInInfo?.token != '')
         {
-          //userInfo.write('userData', userLoggedInInfo);
-          //userInfo.write('token', userLoggedInInfo?.token ?? '');
-          userInfo.write('user_email', userLoggedInInfo!.userEmail);
-          userInfo.write('user_nicename', userLoggedInInfo!.userNicename);
-          userInfo.write('user_display_name', userLoggedInInfo!.userDisplayName);
-          userInfo.write('SignIn',true);
-          // UserModel? model = await loginRepository.getUserDetails();
-          // userInfo.write('name', model!.name);
-          // userInfo.write('id', model.id);
-          // userInfo.write('avatar', model.avatarUrls);
-          // print("avatar : ${model.avatarUrls}");
+          LocalStorage().setToken(userLoggedInInfo?.token ?? '');
           Get.deleteAll();
           Get.toNamed(Routes.HOME);
         }

@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -16,11 +17,13 @@ class SignUpProvider extends GetxService{
         "username": userName,
         "email": email,
         "password": password,
-        "url": password,
       };
       DIO.Response response = await _apiClient.request("wp-json/wp/v2/users/register", Method.POST, body: data);
-      log("SignUp Response : ${response.data}");
-      return SignUpResponse.fromJson(response.data);
+      if(response.statusCode == 200) {
+        return SignUpResponse.fromJson(response.data);
+      } else{
+          Get.snackbar(" Error",response.statusMessage??"",snackPosition: SnackPosition.BOTTOM);
+      }
     } catch (e) {
       e.printError();
     }

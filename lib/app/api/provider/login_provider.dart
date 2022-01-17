@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:get/get.dart';
@@ -13,26 +14,31 @@ class LoginProvider extends GetxService {
       {String? email, String? password}) async {
     try {
       Map<String, dynamic> data = {"username": email, "password": password};
+      print("Checking ${json.encode(data)}");
       DIO.Response response = await _apiClient
           .request("wp-json/jwt-auth/v1/token", Method.POST, body: data);
-      return UserModel.fromJson(response.data);
+      print("Checking $response");
+      if (response.statusCode == 200) {
+
+        return UserModel.fromJson(response.data);
+      } else {
+        Get.snackbar(" Error", response.statusMessage ?? "",
+            snackPosition: SnackPosition.BOTTOM);
+      }
     } on Exception catch (e) {
       showMessageSnackbar(e.toString());
     }
   }
 
-  Future<UserModel?> getUserDetails () async
-  {
+  Future<UserModel?> getUserDetails() async {
     try {
-      DIO.Response response = await _apiClient.request("wp-json/wp/v2/users/me",Method.GET);
-      if (response.statusCode == 200)
-      {
-        log("response usr : ${response.data}");
+      DIO.Response response =
+          await _apiClient.request("wp-json/wp/v2/users/me", Method.GET);
+      if (response.statusCode == 200) {
         return UserModel.fromJson(response.data);
       }
     } catch (e) {
       e.printError();
     }
   }
-
 }

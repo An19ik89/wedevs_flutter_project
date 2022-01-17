@@ -22,15 +22,12 @@ class ProfileProvider extends GetxService {
   }
 
 
-  Future<UpdatedUserResponse?> updateProfile ({String? email,String? displayName,String? niceName,String? firstName, String? lastName, String? token}) async
+  Future<UpdatedUserResponse?> updateProfile ({String? name,String?email}) async
   {
     try {
       Map<String,dynamic> data = {
-        "name": displayName,
-        "first_name": firstName,
-        "last_name": lastName,
+        "name": name,
         "email": email,
-        "nickname": niceName,
       };
       DIO.Response response = await _apiClient.request("wp-json/wp/v2/users/me",Method.POST,body: data);
 

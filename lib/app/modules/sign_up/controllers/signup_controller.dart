@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
@@ -13,6 +14,7 @@ class SignUpScreenController extends GetxController {
   SignUpResponse? signUpResponse = SignUpResponse(code: 0,message: '',data: null);
   var signUpProcess = false.obs;
   final formKey = GlobalKey<FormState>().obs;
+  Rx<XFile>profilePicturePick = XFile("").obs;
 
   final ImagePicker picker = ImagePicker();
   final TextEditingController nameTextController = TextEditingController();
@@ -48,16 +50,13 @@ class SignUpScreenController extends GetxController {
     try
     {
       signUpResponse =  await signUpRepository.signUpWithEmailUsernamePassword(email: emailTextController.text,password: passwordTextController.text,userName: nameTextController.text);
-      log("SignUp resp in controller : ${signUpResponse}");
-      if(signUpResponse?.code == 200){
-        // Get.defaultDialog(title: "Congratulation!", middleText: signUpResponse!.message.toString(),onConfirm:(){
-        //   Get.back(closeOverlays: true);
-        // },barrierDismissible:false,textConfirm: "Done");
+      if((signUpResponse?.code??0) == 200){
         Get.deleteAll();
         Get.toNamed(Routes.HOME);
-
-      }else{
-        Get.defaultDialog(title: "Warning!", middleText: (signUpResponse?.message).toString());
+      }
+      else if((signUpResponse?.code??0) != 200 && (signUpResponse?.code??0) > 0 )
+      {
+        Get.snackbar(" Error",signUpResponse?.message??"",snackPosition: SnackPosition.BOTTOM);
       }
     }finally{
       signUpProcess(false);
@@ -65,17 +64,11 @@ class SignUpScreenController extends GetxController {
 
   }
 
-
-  onImageButtonPressed(ImageSource source){
-    try {
-      final pickedFile = picker.pickImage(
-        source: source,
-        maxWidth: 150,
-        maxHeight: 150,
-        imageQuality: 100,
-      );
-    } catch (e) {
-
+  void selectImage() async {
+    final XFile? selected =
+    await picker.pickImage(source: ImageSource.gallery);
+    if (selected!.path.isNotEmpty) {
+      profilePicturePick.value = selected;
     }
   }
 

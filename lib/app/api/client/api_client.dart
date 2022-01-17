@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
+import 'package:get/get.dart' as GETX;
 import 'package:get/get_state_manager/src/rx_flutter/rx_disposable.dart';
 import 'package:wedevs_flutter_project/app/data/local/local_storage.dart';
 
@@ -41,6 +42,7 @@ class ApiClient extends GetxService {
       return handler.next(response);
     }, onError: (err, handler) {
       print('ERROR[${err.response?.statusCode}]');
+      //GETX.Get.snackbar(" Error ",err.response?.statusMessage??"",snackPosition: GETX.SnackPosition.BOTTOM);
       return handler.next(err);
     }));
   }

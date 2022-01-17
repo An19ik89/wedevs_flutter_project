@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:wedevs_flutter_project/app/api/provider/profile_provider.dart';
+import 'package:wedevs_flutter_project/app/data/model/update_user_response.dart';
 import 'package:wedevs_flutter_project/app/data/model/user_model.dart';
 
 class ProfileRepository extends GetxService {
@@ -9,4 +10,7 @@ class ProfileRepository extends GetxService {
     return _profileProvider.getUserDetails();
   }
 
+  Future<UpdatedUserResponse?> updateProfile({String? name,String?email}){
+    return _profileProvider.updateProfile();
+  }
 }
